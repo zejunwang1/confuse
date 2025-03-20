@@ -10,7 +10,7 @@
 
 - `char/confusion_set.txt`：近音字混淆集
 
-- `char/sound_confusion.txt`：同音字混淆集
+- `char/sound_confusion.txt`：同音近音字混淆集
 
 - `char/shape_confusion.txt`：形近字混淆集
 
@@ -21,6 +21,18 @@
 `char/sound_confusion.txt`和`char/shape_confusion.txt`主要来自于
 
 https://github.com/liushulinle/PLOME/tree/main/pre_train_src/confusions
+
+基于 bert 词典和 [pypinyin](https://github.com/mozillazg/python-pinyin) 构造同音字混淆集：
+
+```shell
+cd char/pinyin/
+# 不考虑多音字
+python get_homophonic_chars.py --vocab_path bert_vocab.txt > pinyin.txt
+# 考虑多音字
+python get_homophonic_chars.py --vocab_path bert_vocab.txt --polyphonic --polyphonic_path polyphonic.txt > pinyin_polyphonic.txt
+# 考虑多音字同时进行扩展
+python get_homophonic_chars.py --vocab_path bert_vocab.txt --polyphonic --polyphonic_path polyphonic.txt --expand > pinyin_expand.txt
+```
 
 ### jieba
 
