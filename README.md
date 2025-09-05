@@ -42,12 +42,12 @@ python get_homophonic_chars.py --vocab_path bert_vocab.txt --polyphonic --polyph
 cd jieba/
 python get_jieba_homophones.py \
     --input jieba_dict.txt \
-    --minCount 50 > jieba_homophones_min_count_50.txt
+    --minCount 50 > jieba_homophones_50.txt
 ```
 
 `minCount`参数表示 jieba 词典中词语出现的最小次数。
 
-`jieba/jieba_homophones_min_count_50.txt`数据形式如下：
+`jieba/jieba_homophones_50.txt`数据形式如下：
 
 ```context
 世间 事件 始建 实践 时间 识见
@@ -61,10 +61,10 @@ python get_jieba_homophones.py \
 如要确保每一行第一个词语与其他词语的编辑距离为 1：
 
 ```shell
-python postprocess.py --input jieba_homophones_min_count_50.txt > jieba_edit_distance_1.txt
+python postprocess.py --input jieba_homophones_50.txt > jieba_homophones_50_ed1.txt
 ```
 
-`jieba/jieba_edit_distance_1.txt`数据形式如下：
+`jieba/jieba_homophones_50_ed1.txt`数据形式如下：
 
 ```context
 世间 时间
@@ -98,10 +98,10 @@ python get_sgns_homophones.py --input sgns_words.txt > sgns_homophones.txt
 如要确保每一行第一个词语与其他词语的编辑距离为 1：
 
 ```shell
-python postprocess.py --input sgns_homophones.txt > sgns_edit_distance_1.txt
+python postprocess.py --input sgns_homophones.txt > sgns_homophones_ed1.txt
 ```
 
-`sgns/sgns_edit_distance_1.txt`数据形式如下：
+`sgns/sgns_homophones_ed1.txt`数据形式如下：
 
 ```context
 世间 十间 时间
