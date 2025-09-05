@@ -27,7 +27,8 @@ if __name__ == "__main__":
             count = int(count)
             if len(word) != 2 or not isChinese(word):
                 continue
-            if count < args.minCount or pos.startswith('nr') or pos.startswith('ns'):
+            if count < args.minCount or pos.startswith('nr') or pos.startswith('ns') or \
+                pos.startswith('nt') or pos.startswith('nz'):
                 continue
             pinyin = '_'.join(lazy_pinyin(word))
             if pinyin in pinyin_dict:
